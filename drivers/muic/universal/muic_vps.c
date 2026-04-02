@@ -117,7 +117,7 @@ static struct vps_cfg cfg_CHARGING_CABLE = {
 };
 static struct vps_cfg cfg_UNIVERSAL_MMDOCK = {
 	.name = "Universal Multimedia dock",
-	.attr = MATTR(VCOM_USB, VB_HIGH),
+	.attr = MATTR(VCOM_USB, VB_HIGH) | MATTER_SUPP,
 };
 static struct vps_cfg cfg_JIG_USB_OFF = {
 	.name = "Jig USB Off",
@@ -695,7 +695,7 @@ static int resolve_dedicated_dev(muic_data_t *pmuic, muic_attached_dev_t *pdev, 
 			}
 			break;
 		case ADC_UNIVERSAL_MMDOCK:
-			pr_info("%s : ADC UNIVERSAL_MMDOCK Discarded\n", MUIC_DEV_NAME);
+			pr_info("%s : ADC UNIVERSAL_MMDOCK Detected (PATCH)\n", MUIC_DEV_NAME);
 			break;
 
 		case ADC_RESERVED_VZW:

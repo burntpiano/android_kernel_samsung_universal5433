@@ -573,6 +573,8 @@ static ssize_t sm5703_muic_show_attached_dev(struct device *dev,
 		return sprintf(buf, "CDP\n");
 	case ATTACHED_DEV_OTG_MUIC:
 		return sprintf(buf, "OTG\n");
+	case ATTACHED_DEV_UNIVERSAL_MMDOCK_MUIC:
+		return sprintf(buf, "OTG\n");
 	case ATTACHED_DEV_TA_MUIC:
 		return sprintf(buf, "TA\n");
 	case ATTACHED_DEV_JIG_UART_OFF_MUIC:
@@ -1315,6 +1317,7 @@ static void sm5703_muic_handle_attach(struct sm5703_muic_data *muic_data,
 		}
 		break;
 	case ATTACHED_DEV_OTG_MUIC:
+	case ATTACHED_DEV_UNIVERSAL_MMDOCK_MUIC:
 	/* OTG -> LANHUB, meaning TA is attached to LANHUB(OTG) */
 		if (new_dev == ATTACHED_DEV_USB_LANHUB_MUIC)
 			break;
@@ -1448,6 +1451,7 @@ static void sm5703_muic_handle_detach(struct sm5703_muic_data *muic_data)
 		break;
 	case ATTACHED_DEV_OTG_MUIC:
 	case ATTACHED_DEV_USB_LANHUB_MUIC:
+	case ATTACHED_DEV_UNIVERSAL_MMDOCK_MUIC:
 		ret = detach_otg_usb(muic_data);
 		break;
 	case ATTACHED_DEV_TA_MUIC:
